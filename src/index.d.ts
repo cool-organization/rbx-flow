@@ -36,6 +36,11 @@ declare namespace Flow {
 	export const Unit: typeof YGUnit;
 	export const Wrap: typeof YGWrap;
 
+	export type FlowConfig = Config;
+	export type FlowNode = Node;
+	export type FlowSize = Size;
+	export type FlowUnit = Unit;
+
 	export const Config: new () => Config;
 	export const Node: new (config?: Config) => Node;
 
