@@ -17,7 +17,7 @@ import type {
 } from "./YogaSys/enums";
 import type Config from "./config";
 import type Node from "./node";
-import type { Size, Unit, Value } from "./utils";
+import type { Size, Value } from "./utils";
 
 declare namespace Flow {
 	export const Align: typeof YGAlign;
@@ -39,13 +39,13 @@ declare namespace Flow {
 	export type FlowConfig = Config;
 	export type FlowNode = Node;
 	export type FlowSize = Size;
-	export type FlowUnit = Unit;
+	export type FlowUnit = YGUnit;
 
 	export const Config: new () => Config;
 	export const Node: new (config?: Config) => Node;
 
 	export const Size: (new (width: number, height?: number) => Size) | (new () => Size);
-	export const Value: (new (unit: Unit, value?: number) => Value) | (new () => Value);
+	export const Value: (new (unit: YGUnit, value?: number) => Value) | (new () => Value);
 }
 
 export = Flow;

@@ -11,72 +11,62 @@ import type {
 	YGPositionType,
 	YGWrap,
 } from "./YogaSys/enums";
-import type { ValueOf } from "./utility-types";
 import type { Layout, Value } from "./utils";
-
-type Align = ValueOf<typeof YGAlign>;
-type Edge = ValueOf<typeof YGEdge>;
-type Display = ValueOf<typeof YGDisplay>;
-type FlexDirection = ValueOf<typeof YGFlexDirection>;
-type Wrap = ValueOf<typeof YGWrap>;
-type Justify = ValueOf<typeof YGJustify>;
-type Overflow = ValueOf<typeof YGOverflow>;
-type PositionType = ValueOf<typeof YGPositionType>;
 
 declare class Node {
 	public constructor(config?: Config);
 
-	public calculateLayout(width?: number, height?: number, direction?: ValueOf<typeof YGDirection>): void;
+	public calculateLayout(width?: number, height?: number, direction?: YGDirection): void;
 	public copyStyle(node: YGNode): void;
 
 	public free(): void;
 	public freeRecursive(): void;
 
-	public getAlignContent(): Align;
-	public getAlignItems(): Align;
-	public getAlignSelf(): Align;
+	public getAlignContent(): YGAlign;
+	public getAlignItems(): YGAlign;
+	public getAlignSelf(): YGAlign;
 
 	public getAspectRatio(): number;
 
-	public getBorder(edge: Edge): number;
+	public getBorder(edge: YGEdge): number;
 	public getChild(index: number): Node | undefined;
 	public getChildCount(): number;
 
-	public getComputedBorder(edge: Edge): number;
+	public getComputedBorder(edge: YGEdge): number;
 	public getComputedBottom(): number;
 	public getComputedHeight(): number;
 	public getComputedLayout(): Layout;
 	public getComputedLeft(): number;
-	public getComputedMargin(edge: Edge): number;
-	public getComputedPadding(edge: Edge): number;
+	public getComputedMargin(edge: YGEdge): number;
+	public getComputedPadding(edge: YGEdge): number;
 	public getComputedRight(): number;
 	public getComputedTop(): number;
 	public getComputedWidth(): number;
 
-	public getDisplay(): Display;
+	public getDisplay(): YGDisplay;
 
 	public getFlexBasis(): Value;
-	public getFlexDirection(): FlexDirection;
+	public getFlexDirection(): YGFlexDirection;
 	public getFlexGrow(): number;
 	public getFlexShrink(): number;
-	public getFlexWrap(): Wrap;
+	public getFlexWrap(): YGWrap;
 
 	public getHeight(): Value;
 	public getWidth(): Value;
 
-	public getJustifyContent(): Justify;
-	public getMargin(edge: Edge): Value;
+	public getJustifyContent(): YGJustify;
+	public getMargin(edge: YGEdge): Value;
 
 	public getMaxHeight(): Value;
 	public getMaxWidth(): Value;
 	public getMinHeight(): Value;
 	public getMinWidth(): Value;
-	public getOverflow(): Overflow;
+	public getOverflow(): YGOverflow;
 
-	public getPadding(edge: Edge): Value;
+	public getPadding(edge: YGEdge): Value;
 	public getParent(): Node | undefined;
-	public getPosition(edge: Edge): Value;
-	public getPositionType(): PositionType;
+	public getPosition(edge: YGEdge): Value;
+	public getPositionType(): YGPositionType;
 
 	public getDirtied(): YGDirtiedFunc;
 	public isDirty(): boolean;
@@ -86,22 +76,22 @@ declare class Node {
 	public removeChild(child: Node): void;
 	public reset(): void;
 
-	public setAlignContent(alignContent: Align): void;
-	public setAlignItems(alignItems: Align): void;
-	public setAlignSelf(alignSelf: Align): void;
+	public setAlignContent(alignContent: YGAlign): void;
+	public setAlignItems(alignItems: YGAlign): void;
+	public setAlignSelf(alignSelf: YGAlign): void;
 
 	public setAspectRatio(aspectRatio: number): void;
-	public setBorder(edge: Edge, borderWidth: number): void;
-	public setDisplay(display: Display): void;
+	public setBorder(edge: YGEdge, borderWidth: number): void;
+	public setDisplay(display: YGDisplay): void;
 
 	public setFlex(flex: number): void;
 	public setFlexBasis(flexBasis: number | string): void;
 	public setFlexBasisPercent(flexBasis: number): void;
 	public setFlexBasisAuto(): void;
-	public setFlexDirection(flexDirection: FlexDirection): void;
+	public setFlexDirection(flexDirection: YGFlexDirection): void;
 	public setFlexGrow(flexGrow: number): void;
 	public setFlexShrink(flexShrink: number): void;
-	public setFlexWrap(flexWrap: Wrap): void;
+	public setFlexWrap(flexWrap: YGWrap): void;
 
 	public setHeight(height: number | string): void;
 	public setHeightPercent(height: number): void;
@@ -111,11 +101,11 @@ declare class Node {
 	public setMinHeight(minHeight: number | string): void;
 	public setMinHeightPercent(minHeight: number): void;
 
-	public setJustifyContent(justifyContent: Justify): void;
+	public setJustifyContent(justifyContent: YGJustify): void;
 
-	public setMargin(edge: Edge, margin: number | string): void;
-	public setMarginPercent(edge: Edge, margin: number): void;
-	public setMarginAuto(edge: Edge): void;
+	public setMargin(edge: YGEdge, margin: number | string): void;
+	public setMarginPercent(edge: YGEdge, margin: number): void;
+	public setMarginAuto(edge: YGEdge): void;
 
 	public setWidth(width: number | string): void;
 	public setWidthPercent(width: number): void;
@@ -128,14 +118,14 @@ declare class Node {
 	public setMeasureFunc(measureFunc?: YGMeasureFunc): void;
 	public unsetMeasureFunc(): void;
 
-	public setOverflow(overflow: Overflow): void;
+	public setOverflow(overflow: YGOverflow): void;
 
-	public setPadding(edge: Edge, padding: number | string): void;
-	public setPaddingPercent(edge: Edge, padding: number): void;
+	public setPadding(edge: YGEdge, padding: number | string): void;
+	public setPaddingPercent(edge: YGEdge, padding: number): void;
 
-	public setPosition(edge: Edge, position: number | string): void;
-	public setPositionPercent(edge: Edge, position: number): void;
-	public setPositionType(positionType: PositionType): void;
+	public setPosition(edge: YGEdge, position: number | string): void;
+	public setPositionPercent(edge: YGEdge, position: number): void;
+	public setPositionType(positionType: YGPositionType): void;
 
 	public setDirtiedFunc(dirtiedFunc: YGDirtiedFunc): void;
 	public unsetMeasureFun(): void;

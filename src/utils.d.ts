@@ -1,5 +1,4 @@
 import type { YGUnit } from "./YogaSys";
-import type { ValueOf } from "./utility-types";
 
 export interface Layout {
 	left: number;
@@ -18,9 +17,8 @@ export interface Size {
 	// public constructor();
 }
 
-export type Unit = ValueOf<typeof YGUnit>;
 export interface Value {
-	unit: Unit;
+	unit: YGUnit;
 	value: number;
 
 	// public constructor(unit: Unit, value: number);
