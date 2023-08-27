@@ -1,0 +1,12 @@
+{
+	"name": "Flow",
+	"tree": {
+		"$className": "DataModel",
+		"$ignoreUnknownInstances": true,
+		"ReplicatedStorage": {
+			"$className": "ReplicatedStorage",
+			"$ignoreUnknownInstances": true,
+			"Flow": {"$path": "src"}
+		}
+	}
+}

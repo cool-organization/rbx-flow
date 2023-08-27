@@ -31,7 +31,7 @@ SOFTWARE.
 --!strict
 
 local PackageRoot = script.Parent
-local Packages = PackageRoot.Packages
+local Packages = PackageRoot.Parent.Packages
 
 local LuauPolyfill = require(Packages.LuauPolyfill)
 local instanceof = LuauPolyfill.instanceof
@@ -58,53 +58,53 @@ Log.__index = Log
 export type Log = {}
 
 function Log.new(): Log
-    local self = setmetatable({}, Log)
-    return (self :: any) :: Log
+	local self = setmetatable({}, Log)
+	return (self :: any) :: Log
 end
 
 function Log.log(using: YGNode | YGConfig, level: YGLogLevel, context: any, format: string, ...: any): ()
-    if instanceof(using, YGNode) then
-        local node: YGNode = using :: YGNode
-        vlog(if node == nil then (nil :: any) :: YGConfig? else node:getConfig(), node, level, context, format, ...)
-    elseif instanceof(using, YGConfig) then
-        local config: YGConfig = using :: YGConfig
-        vlog(config, nil, level, context, format, ...)
-    end
+	if instanceof(using, YGNode) then
+		local node: YGNode = using :: YGNode
+		vlog(if node == nil then (nil :: any) :: YGConfig? else node:getConfig(), node, level, context, format, ...)
+	elseif instanceof(using, YGConfig) then
+		local config: YGConfig = using :: YGConfig
+		vlog(config, nil, level, context, format, ...)
+	end
 end
 exports.Log = Log
 
 -- deviation: config param can actually be nil
 function vlog(config: YGConfig?, node: YGNode?, level: YGLogLevel, context: any, format: string, ...: any): ()
-    local logConfig: YGConfig
-    if config ~= nil then
-        logConfig = config
-    else
-        logConfig = YGConfigGetDefault()
-    end
-    logConfig:log(logConfig, node :: YGNode, level, context, format, ...)
+	local logConfig: YGConfig
+	if config ~= nil then
+		logConfig = config
+	else
+		logConfig = YGConfigGetDefault()
+	end
+	logConfig:log(logConfig, node :: YGNode, level, context, format, ...)
 end
 -- deviation END
 
 -- note: Some imports are done dynamically to resolve cyclic dependency issues.
 return {
-    resolve = function(deps: any)
-        local yogaUtilsModule = require(PackageRoot.yoga_utils).resolve({
-            yogaAssertionsModule = deps.yogaAssertionsModule,
-        })
+	resolve = function(deps: any)
+		local yogaUtilsModule = require(PackageRoot.yoga_utils).resolve({
+			yogaAssertionsModule = deps.yogaAssertionsModule;
+		})
 
-        local ygConfigModule = ygConfigModule_.resolve({
-            yogaUtilsModule = yogaUtilsModule,
-        })
-        YGConfig = ygConfigModule
+		local ygConfigModule = ygConfigModule_.resolve({
+			yogaUtilsModule = yogaUtilsModule;
+		})
+		YGConfig = ygConfigModule
 
-        local ygNodeModule = require(PackageRoot.ygnode).resolve({
-            yogaAssertionsModule = deps.yogaAssertionsModule,
-            yogaUtilsModule = yogaUtilsModule,
-        })
+		local ygNodeModule = require(PackageRoot.ygnode).resolve({
+			yogaAssertionsModule = deps.yogaAssertionsModule;
+			yogaUtilsModule = yogaUtilsModule;
+		})
 
-        YGConfigGetDefault = yogaUtilsModule.YGConfigGetDefault
-        YGNode = ygNodeModule
+		YGConfigGetDefault = yogaUtilsModule.YGConfigGetDefault
+		YGNode = ygNodeModule
 
-        return exports
-    end,
+		return exports
+	end;
 }

@@ -31,7 +31,7 @@ SOFTWARE.
 --!strict
 
 local PackageRoot = script.Parent
-local Packages = PackageRoot.Packages
+local Packages = PackageRoot.Parent.Packages
 
 local LuauPolyfill = require(Packages.LuauPolyfill)
 local Array = LuauPolyfill.Array

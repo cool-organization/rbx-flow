@@ -3,7 +3,7 @@
 
 local PackageRoot = script.Parent
 
-local LuauPolyfill = require(PackageRoot.LuauPolyfill)
+local LuauPolyfill = require(PackageRoot.Packages.LuauPolyfill)
 local Boolean = LuauPolyfill.Boolean
 local Error = LuauPolyfill.Error
 

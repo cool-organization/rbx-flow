@@ -31,7 +31,7 @@ SOFTWARE.
 -- For performance reasons, everything in `init.lua` must be defined as a local, so we quickly run into the limit.
 
 local PackageRoot = script.Parent
-local Packages = PackageRoot.Packages
+local Packages = PackageRoot.Parent.Packages
 
 local LuauPolyfill = require(Packages.LuauPolyfill)
 local Boolean = LuauPolyfill.Boolean

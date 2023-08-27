@@ -31,7 +31,7 @@ SOFTWARE.
 --!strict
 
 local PackageRoot = script.Parent
-local Packages = PackageRoot.Packages
+local Packages = PackageRoot.Parent.Packages
 
 local LuauPolyfill = require(Packages.LuauPolyfill)
 local Array = LuauPolyfill.Array
@@ -43,7 +43,7 @@ type YGNode = Types.YGNode
 local Enums = require(PackageRoot.enums)
 type YGMeasureMode = Enums.YGMeasureMode
 
-type Array<T> = { T }
+type Array<T> = {T}
 
 local Event = {}
 
@@ -51,19 +51,19 @@ local Event = {}
 local push: (newHead: Subscriber) -> Subscriber
 local subscribers: Subscribers
 
-local LayoutType = { kLayout = 1, kMeasure = 2, kCachedLayout = 3, kCachedMeasure = 4 }
+local LayoutType = {kLayout = 1, kMeasure = 2, kCachedLayout = 3, kCachedMeasure = 4}
 export type LayoutType = number
 Event.LayoutType = LayoutType
 
 local LayoutPassReason = {
-	kInitial = 1,
-	kAbsLayout = 2,
-	kStretch = 3,
-	kMultilineStretch = 4,
-	kFlexLayout = 5,
-	kMeasureChild = 6,
-	kAbsMeasureChild = 7,
-	kFlexMeasure = 8,
+	kInitial = 1;
+	kAbsLayout = 2;
+	kStretch = 3;
+	kMultilineStretch = 4;
+	kFlexLayout = 5;
+	kMeasureChild = 6;
+	kAbsMeasureChild = 7;
+	kFlexMeasure = 8;
 }
 export type LayoutPassReason = number
 Event.LayoutPassReason = LayoutPassReason
@@ -110,7 +110,7 @@ function LayoutData.new(
 		measureCallbacks = 0
 	end
 	if measureCallbackReasonsCount == nil then
-		measureCallbackReasonsCount = { 0, 0, 0, 0, 0, 0, 0, 0 }
+		measureCallbackReasonsCount = {0, 0, 0, 0, 0, 0, 0, 0}
 	end
 	self.layouts = layouts
 	self.measures = measures
@@ -149,21 +149,21 @@ Event.LayoutPassReasonToString = LayoutPassReasonToString
 -- deviation: enum name is 'EventType' instead of 'Type' as it can't be defined
 -- under the class in TypeScript and the naming is vague if left as-is.
 local EventType = {
-	NodeAllocation = 1,
-	NodeDeallocation = 2,
-	NodeLayout = 3,
-	LayoutPassStart = 4,
-	LayoutPassEnd = 5,
-	MeasureCallbackStart = 6,
-	MeasureCallbackEnd = 7,
-	NodeBaselineStart = 8,
-	NodeBaselineEnd = 9,
+	NodeAllocation = 1;
+	NodeDeallocation = 2;
+	NodeLayout = 3;
+	LayoutPassStart = 4;
+	LayoutPassEnd = 5;
+	MeasureCallbackStart = 6;
+	MeasureCallbackEnd = 7;
+	NodeBaselineStart = 8;
+	NodeBaselineEnd = 9;
 }
 export type EventType = number
 Event.EventType = EventType
 
 type Subscriber = typeof(setmetatable({}, {
-	__call = (function() end :: any) :: (_self: any, node: YGNode, type: EventType, data: any) -> (),
+	__call = (function() end :: any) :: (_self: any, node: YGNode, type: EventType, data: any) -> ();
 }))
 
 type Subscribers = Array<Subscriber>
@@ -204,13 +204,13 @@ export type EventData =
 	| MeasureCallbackEndData
 	| NodeLayoutData
 
-export type NodeAllocationData = { config: YGConfig }
+export type NodeAllocationData = {config: YGConfig}
 
-export type NodeDeallocationData = { config: YGConfig }
+export type NodeDeallocationData = {config: YGConfig}
 
-export type LayoutPassStartData = { layoutContext: any }
+export type LayoutPassStartData = {layoutContext: any}
 
-export type LayoutPassEndData = { layoutContext: any, layoutData: LayoutData }
+export type LayoutPassEndData = {layoutContext: any, layoutData: LayoutData}
 
 export type MeasureCallbackEndData = {
 	layoutContext: any,
@@ -223,7 +223,7 @@ export type MeasureCallbackEndData = {
 	reason: LayoutPassReason,
 }
 
-export type NodeLayoutData = { layoutType: LayoutType, layoutContext: any }
+export type NodeLayoutData = {layoutType: LayoutType, layoutContext: any}
 
 -- deviation: use a list of subscribers instead of a reverse linked list for
 -- tracking active subscribers to simplify implementation.

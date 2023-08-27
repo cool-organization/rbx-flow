@@ -2,7 +2,7 @@
 --!strict
 
 local TS = _G[script]
-local _ = TS.import(script, script, "Packages", "LuauPolyfill")
+TS.import(script, script, "Packages", "LuauPolyfill")
 
 local YogaSys = TS.import(script, script, "YogaSys")
 local Config = TS.import(script, script, "config")
