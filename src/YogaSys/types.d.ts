@@ -21,17 +21,17 @@ export class YGSize {
 	public constructor();
 }
 
-export type YGPrintFunc = (node: YGNode, contextFunction: unknown) => void;
+export type YGPrintFunc = (node: YGNode, contextFunction: any) => void;
 export type YGMeasureFunc = (
 	node: YGNode,
 	width: number,
 	widthMode: YGMeasureMode,
 	height: number,
 	heightMode: YGMeasureMode,
-	contextFn: unknown,
+	contextFn: any,
 ) => YGSize;
 
-export type YGBaselineFunc = (node: YGNode, width: number, height: number, contextFn: unknown) => number;
+export type YGBaselineFunc = (node: YGNode, width: number, height: number, contextFn: any) => number;
 export type YGDirtiedFunc = (node: YGNode) => void;
 export type YGLogger = (
 	config: YGConfig,
@@ -41,7 +41,7 @@ export type YGLogger = (
 	args: Array<unknown>,
 ) => void;
 
-export type YGCloneNodeFunc = (oldNode: YGNode, owner: YGNode, childIndex: number, cloneContext: unknown) => YGNode;
+export type YGCloneNodeFunc = (oldNode: YGNode, owner: YGNode, childIndex: number, cloneContext: any) => YGNode;
 export type YGNodeCleanupFunc = (node: YGNode) => void;
 
 export interface YGCachedMeasurement {
@@ -133,12 +133,12 @@ export class YGConfig {
 	public pointScaleFactor: number;
 	public logger: YGLogger;
 	public cloneNodeCallback: YGCloneNodeFunc;
-	public context: unknown;
+	public context: any;
 
 	public constructor(logger: YGLogger);
 
 	public log(config: YGConfig, node: YGNode, logLevel: YGLogLevel, format: string, ...args: Array<unknown>): void;
-	public cloneNode(node: YGNode, owner: YGNode, childIndex: number, cloneContext?: unknown): YGNode;
+	public cloneNode(node: YGNode, owner: YGNode, childIndex: number, cloneContext?: any): YGNode;
 	public setLogger(logger?: YGLogger): void;
 	public setCloneNodeCallback(cloneNode?: YGCloneNodeFunc): void;
 }
@@ -182,10 +182,10 @@ export class YGLayout {
 	public clone(): YGLayout;
 }
 
-export type IterChildrenCallback = (node: YGNodeCleanupFunc, cloneContext: unknown) => void;
+export type IterChildrenCallback = (node: YGNodeCleanupFunc, cloneContext: any) => void;
 
 export class YGNode {
-	private context_: unknown;
+	private context_: any;
 	private print_: YGPrintFunc;
 	private hasNewLayout_: boolean;
 	private isReferenceBaseline_: boolean;
@@ -203,7 +203,7 @@ export class YGNode {
 	private resolvedDimensions_: Array<YGValue>;
 
 	public constructor(
-		contextOrNodeOrConfig?: unknown | YGNode | YGConfig,
+		contextOrNodeOrConfig?: any | YGNode | YGConfig,
 		print_?: YGPrintFunc,
 		hasNewLayout?: boolean,
 		isReferenceBaseline?: boolean,
@@ -241,7 +241,7 @@ export class YGNode {
 
 	public operatorAtrib(node: YGNode): YGNode;
 	public fromNode(node: YGNode): void;
-	public print(printContext?: unknown): void;
+	public print(printContext?: any): void;
 	public computeEdgeValueForRow(edges: Array<YGValue>, rowEdge: YGEdge, edge: YGEdge, defaultValue: YGValue): YGValue;
 
 	public computeEdgeValueForColumn(edges: Array<YGValue>, edge: YGEdge, defaultValue: YGValue): YGValue;
@@ -250,13 +250,13 @@ export class YGNode {
 		widthMode: YGMeasureMode,
 		height: number,
 		heightMode: YGMeasureMode,
-		layoutContext?: unknown,
+		layoutContext?: any,
 	): YGSize;
-	public baseline(width: number, height: number, layoutContext?: unknown): number;
+	public baseline(width: number, height: number, layoutContext?: any): number;
 	public useWebDefaults(): void;
 	public hasMeasureFunc(): boolean;
 	public hasBaselineFunc(): boolean;
-	public getContext(): unknown;
+	public getContext(): any;
 	public getHasNewLayout(): boolean;
 	public getNodeType(): YGNodeType;
 	public getDirtied(): YGDirtiedFunc;
@@ -286,7 +286,7 @@ export class YGNode {
 	public getLeadingPaddingAndBorder(axis: YGFlexDirection, widthSize: number): YGFloatOptional;
 	public getTrailingPaddingAndBorder(axis: YGFlexDirection, widthSize: number): YGFloatOptional;
 	public getMarginForAxis(axis: YGFlexDirection, widthSize: number): YGFloatOptional;
-	public setContext(context: unknown): void;
+	public setContext(context: any): void;
 	public setPrintFunc(printFunc: YGPrintFunc): void;
 	public setHasNewLayout(hasNewLayout: boolean): void;
 	public setNodeType(nodeType: YGNodeType): void;
@@ -329,8 +329,8 @@ export class YGNode {
 	public insertChildIndex(child: YGNode, index: number): void;
 	public removeChild(child: YGNode): boolean;
 	public removeChildIndex(index: number): void;
-	public iterChildrenAfterCloningIfNeeded(callback: IterChildrenCallback, cloneContext: unknown): void;
-	public cloneChildrenIfNeeded(cloneContext?: unknown): void;
+	public iterChildrenAfterCloningIfNeeded(callback: IterChildrenCallback, cloneContext: any): void;
+	public cloneChildrenIfNeeded(cloneContext?: any): void;
 	public markDirtyAndPropogate(): void;
 	public resolveFlexGrow(): number;
 	public resolveFlexShrink(): number;

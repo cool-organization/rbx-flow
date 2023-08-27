@@ -63,7 +63,7 @@ declare namespace Event {
 		NodeBaselineEnd = 9,
 	}
 
-	interface Subscriber<T = unknown> {
+	interface Subscriber<T = any> {
 		(node: YGNode, type: EventType, data: T): void;
 	}
 
@@ -71,7 +71,7 @@ declare namespace Event {
 		public constructor();
 
 		public static reset(this: void): void;
-		public static subscribe<T = unknown>(this: void, subscriber: Subscriber<T>): void;
+		public static subscribe<T = any>(this: void, subscriber: Subscriber<T>): void;
 		public static publish(this: void, node: YGNode, eventType: EventType, eventData?: EventData): void;
 	}
 
@@ -84,16 +84,16 @@ declare namespace Event {
 	}
 
 	export interface LayoutPassStartData {
-		layoutContext: unknown;
+		layoutContext: any;
 	}
 
 	export interface LayoutPassEndData {
-		layoutContext: unknown;
+		layoutContext: any;
 		layoutData: LayoutData;
 	}
 
 	export interface MeasureCallbackEndData {
-		layoutContext: unknown;
+		layoutContext: any;
 		width: number;
 		widthMeasureMode: YGMeasureMode;
 		height: number;
@@ -104,7 +104,7 @@ declare namespace Event {
 	}
 
 	export interface NodeLayoutData {
-		layoutContext: unknown;
+		layoutContext: any;
 		layoutType: LayoutType;
 	}
 
