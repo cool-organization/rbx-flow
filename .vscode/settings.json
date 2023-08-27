@@ -12,5 +12,8 @@
 	"eslint.run": "onType",
 	"eslint.format.enable": true,
 	"luau-lsp.sourcemap.rojoProjectFile": "for-types-only.project.json",
-	"robloxLsp.workspace.rojoProjectFile": "for-types-only"
+	"robloxLsp.workspace.rojoProjectFile": "for-types-only",
+	"robloxLsp.diagnostics.disable": [
+		"undefined-type"
+	]
 }

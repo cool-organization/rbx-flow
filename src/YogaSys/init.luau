@@ -38,7 +38,7 @@ local Boolean = LuauPolyfill.Boolean
 local Number = LuauPolyfill.Number
 local String = LuauPolyfill.String
 
-type Array<T> = LuauPolyfill.Array<T>
+type Array<T> = {T}
 
 local enumsModule = require(script.enums)
 local YGUnit = enumsModule.YGUnit
