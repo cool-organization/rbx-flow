@@ -1,6 +1,6 @@
-declare namespace YGEnum {
-	type ValueOf<T> = T[keyof T];
+import type { ValueOf } from "../utility-types";
 
+declare namespace YGEnum {
 	export const YGAlignCount = 8;
 	export const YGAlign: {
 		Auto: 1;

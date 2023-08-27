@@ -1,25 +1,25 @@
 // todo: probably finish this
 
 import YGEnum, {
-	type YGUnit,
-	type YGEdge,
-	type YGNodeType,
-	type YGFlexDirection,
 	type YGAlign,
-	type YGMeasureMode,
-	type YGLogLevel,
 	type YGDimension,
-	type YGJustify,
-	type YGPositionType,
-	type YGWrap,
-	type YGOverflow,
-	type YGDisplay,
 	type YGDimensionCount,
-	type YGPrintOptions,
+	type YGDirection,
+	type YGDisplay,
+	type YGEdge,
 	type YGExperimentalFeature,
-	YGDirection,
+	type YGFlexDirection,
+	type YGJustify,
+	type YGLogLevel,
+	type YGMeasureMode,
+	type YGNodeType,
+	type YGOverflow,
+	type YGPositionType,
+	type YGPrintOptions,
+	type YGUnit,
+	type YGWrap,
 } from "./enums";
-import { LayoutData, LayoutPassReason } from "./event";
+import type { LayoutData, LayoutPassReason } from "./event";
 
 import type {
 	YGNode,
@@ -38,26 +38,27 @@ import type {
 	YGCloneNodeFunc,
 	YGNodeCleanupFunc,
 } from "./types";
+import type { ValueOf } from "../utility-types";
 
 export function YGSpacer(level: number): string;
-export function YGMeasureModeName(mode: YGMeasureMode, performLayout: boolean): string;
+export function YGMeasureModeName(mode: ValueOf<typeof YGMeasureMode>, performLayout: boolean): string;
 export function YGMeasureModeSizeIsExactAndMatchesOldMeasuredSize(
-	sizeMode: YGMeasureMode,
+	sizeMode: ValueOf<typeof YGMeasureMode>,
 	size: number,
 	lastComputedSize: number,
 ): boolean;
 
 export function YGMeasureModeOldSizeIsUnspecifiedAndStillFits(
-	sizeMode: YGMeasureMode,
+	sizeMode: ValueOf<typeof YGMeasureMode>,
 	size: number,
-	lastSizeMode: YGMeasureMode,
+	lastSizeMode: ValueOf<typeof YGMeasureMode>,
 	lastComputedSize: number,
 ): boolean;
 
 export function YGMeasureModeNewMeasureSizeIsStricterAndStillValid(
-	sizeMode: YGMeasureMode,
+	sizeMode: ValueOf<typeof YGMeasureMode>,
 	size: number,
-	lastSizeMode: YGMeasureMode,
+	lastSizeMode: ValueOf<typeof YGMeasureMode>,
 	lastSize: number,
 	lastComputedSize: number,
 ): boolean;
@@ -70,13 +71,13 @@ export function YGRoundValueToPixelGrid(
 ): number;
 
 export function YGNodeCanUseCachedMeasurement(
-	widthMode: YGMeasureMode,
+	widthMode: ValueOf<typeof YGMeasureMode>,
 	width: number,
-	heightMode: YGMeasureMode,
+	heightMode: ValueOf<typeof YGMeasureMode>,
 	height: number,
-	lastWidthMode: YGMeasureMode,
+	lastWidthMode: ValueOf<typeof YGMeasureMode>,
 	lastWidth: number,
-	lastHeightMode: YGMeasureMode,
+	lastHeightMode: ValueOf<typeof YGMeasureMode>,
 	lastHeight: number,
 	lastComputedWidth: number,
 	lastComputedHeight: number,
@@ -89,9 +90,9 @@ export function YGLayoutNodeInternal(
 	node: YGNode,
 	availableWidth: number,
 	availableHeight: number,
-	ownerDirection: YGDirection,
-	widthMeasureMode: YGMeasureMode,
-	heightMeasureMode: YGMeasureMode,
+	ownerDirection: ValueOf<typeof YGDirection>,
+	widthMeasureMode: ValueOf<typeof YGMeasureMode>,
+	heightMeasureMode: ValueOf<typeof YGMeasureMode>,
 	ownerWidth: number,
 	ownerHeight: number,
 	performLayout: boolean,
@@ -115,7 +116,7 @@ export function YGNodeCalculateLayoutWithContext(
 	node: YGNode,
 	ownerWidth: number,
 	ownerHeight: number,
-	ownerDirection: YGDirection,
+	ownerDirection: ValueOf<typeof YGDirection>,
 	layoutContext: any,
 ): void;
 
@@ -123,7 +124,7 @@ export function YGNodeCalculateLayout(
 	node: YGNode,
 	ownerWidth: number,
 	ownerHeight: number,
-	ownerDirection: YGDirection,
+	ownerDirection: ValueOf<typeof YGDirection>,
 ): void;
 
 export function YGConfigSetLogger(config: YGConfig, logger: YGLogger): void;
