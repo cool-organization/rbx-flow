@@ -14,9 +14,11 @@ import type {
 	YGWrap,
 } from "./enums";
 
-export interface YGSize {
-	width: number;
-	height: number;
+export class YGSize {
+	public width: number;
+	public height: number;
+
+	public constructor();
 }
 
 export type YGPrintFunc = (node: YGNode, contextFunction: unknown) => void;

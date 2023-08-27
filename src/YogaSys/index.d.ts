@@ -35,6 +35,9 @@ import type {
 	YGNodeCleanupFunc,
 } from "./types";
 
+export function YGSpacer(level: number): string;
+export function YGMeasureModeName(mode: YGMeasureMode, performLayout: boolean): string;
+
 export {
 	YGEnum,
 	YGUnit,
