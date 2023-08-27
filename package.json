@@ -1,6 +1,6 @@
 {
   "name": "@rbxts/flow",
-  "version": "1.0.0.ts.0",
+  "version": "1.0.0-ts.0",
   "description": "Roblox-TS types for the Flow library (https://github.com/grilme99/Flow)",
   "main": "out/init.lua",
   "scripts": {
@@ -8,7 +8,7 @@
     "watch": "rbxtsc -w",
     "prepublishOnly": "npm run build"
   },
-  "keywords": ["flexbox", ""],
+  "keywords": ["flexbox", "typescript", "flow"],
   "author": "Brooke Rhodes",
   "contributors": ["HowManySmall"],
   "license": "MIT",
