@@ -1,13 +1,13 @@
 --!optimize 2
 --!strict
 
-local PackageRoot = script
+local TS = _G[script]
+local _ = TS.import(script, script, "Packages", "LuauPolyfill")
 
-local YogaSys = require(PackageRoot.YogaSys)
-
-local Config = require(PackageRoot.config)
-local Node = require(PackageRoot.node)
-local Utils = require(PackageRoot.utils)
+local YogaSys = TS.import(script, script, "YogaSys")
+local Config = TS.import(script, script, "config")
+local Node = TS.import(script, script, "node")
+local Utils = TS.import(script, script, "utils")
 
 local Flow = {}
 
